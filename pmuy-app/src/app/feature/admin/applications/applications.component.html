@@ -1,0 +1,69 @@
+<div class="card">
+  <p-table [value]="people" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Aadhar No.</th>
+        <th>Name</th>
+        <th>Income</th>
+        <th>Subsidy</th>
+        <th>Actions</th>
+        <th>Rejection Reason</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-person>
+      <tr>
+        <td>{{ person.aadhar }}</td>
+        <td>{{ person.name }}</td>
+        <td>{{ person.income | currency:'INR' }}</td>
+        <td>{{ person.subsidy }}%</td>
+        <td>
+          @if(person.status === 'pending'){
+          <button pButton label="Approve" icon="pi pi-check"
+                  class="p-button-success mr-1"
+                  (click)="approve(person)"
+                 ></button>
+
+          <button pButton label="Reject" icon="pi pi-times"
+                  class="p-button-danger"
+                  (click)="openRejectDialog(person)"
+                  style="margin-left: 5px;"
+                  ></button>
+          } @else {
+            {{person.status}}
+          }
+        </td>
+        <td>
+          @if (person.rejectReason) {
+            <p>{{ person.rejectReason }}</p>
+          } @else {
+            <p>- -</p>
+          }
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<p-confirmDialog></p-confirmDialog>
+<p-dialog header="Reject Application"
+          [(visible)]="rejectDialogVisible"
+          [modal]="true"
+          [closable]="false"
+          [style]="{width: '400px'}">
+
+  <div class="p-fluid">
+    <label for="reason">Reason for rejection</label>
+    <input pInputText id="reason" [(ngModel)]="rejectReason" placeholder="Enter reason" />
+  </div>
+
+  <ng-template pTemplate="footer">
+    <div class="flex justify-end gap-2">
+      <button pButton label="Cancel" icon="pi pi-times" class="p-button-text"
+              (click)="rejectDialogVisible=false"></button>
+      <button pButton label="Reject" icon="pi pi-check" class="p-button-danger"
+              (click)="confirmReject()"></button>
+    </div>
+  </ng-template>
+</p-dialog>
+@if (!people || people.length === 0) {
+  <p>No applications found.</p>
+}

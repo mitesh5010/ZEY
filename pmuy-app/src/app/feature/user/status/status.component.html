@@ -1,0 +1,30 @@
+<p-card header="Check Application Status">
+  <div>
+    <p>To check the status of your application, please enter your Aadhar Number below:</p>
+    <input pInputText placeholder="Aadhar Number" [(ngModel)]="aadhar" style="margin-right: 10px;" />
+    <p-button label="Check Status" (click)="checkStatus()"></p-button>
+  </div>
+
+  <div>
+    @if (result) {
+      <p><b>Aadhar Number:</b> {{ result.aadhar }}</p>
+      <p><b>Status:</b> {{ result.status }}</p>
+      @if (result.status === 'Approved') {
+        <div class="approve-card">
+          <p>Your application has been approved.</p>
+          <b>Officer Name: {{ result.officerInfo }}</b><br>
+          Subsidy Amount: <b>{{result.subsidy}}%</b><br>
+          Started: <b>{{ result.setupDate | date }}</b>
+        </div>
+
+      } @else if (result.status === 'Rejected') {
+        <p>Your application has been rejected.</p><br>
+        <b>Officer Name: {{ result.officerInfo }}</b><br>
+        <p><b>Reason:</b> {{ result.rejectReason }}</p>
+      } @else {
+        <p>Your application is still under review.</p>
+      }
+    }
+  </div>
+</p-card>
+  

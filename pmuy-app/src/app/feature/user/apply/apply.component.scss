@@ -1,0 +1,15 @@
+/* Center the card on the page */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  width: 100%;
+}
+:host ::ng-deep .p-inputtext {
+  margin-bottom: 10px;
+}
+
+:host ::ng-deep .p-card {
+  padding: 20px;
+}

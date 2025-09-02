@@ -1,0 +1,19 @@
+<p-card header="Apply for LPG Connection" class="flex flex center">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <div>
+        <label for="aadhar">Aadhar Number</label><br>
+        <input pInputText id="aadhar" formControlName="aadhar"/>
+      </div>
+      <div>
+        <label for="name">Full Name</label><br>
+        <input pInputText id="name" formControlName="name" />
+      </div>
+      <div>
+        <label for="income">Annual Income</label><br>
+        <input pInputText id="income" formControlName="income" type="number" />
+      </div>
+    </div>
+    <button pButton type="submit" label="Apply"></button>
+  </form>
+</p-card>

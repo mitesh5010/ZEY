@@ -1,0 +1,27 @@
+[
+  {
+    "aadhar": "123456789012",
+    "name": "Alice Smith",
+    "income": 10000
+  },
+  {
+    "aadhar": "987654321098",
+    "name": "Bob Johnson",
+    "income": 20000
+  },
+  {
+    "aadhar": "111222333444",
+    "name": "Charlie Brown",
+    "income": 60000
+  },
+  {
+    "aadhar": "555666777888",
+    "name": "Dana White",
+    "income": 65000
+  },
+  {
+    "aadhar": "999888777666",
+    "name": "Eve Black",
+    "income": 0
+  }
+]
